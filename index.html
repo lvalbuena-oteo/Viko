@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta VIKO × fisify - Bienestar Físico como Ventaja Competitiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --viko-navy: #1a2332;
+            --viko-red: #e04848;
+            --viko-blue: #3b7dd8;
+            --viko-teal: #2ab5a0;
+            --viko-orange: #f0943a;
+            --fisify-green: #00c9a7;
+            --warm-white: #faf8f5;
+            --sand: #f0ebe3;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--viko-navy);
+            background: var(--warm-white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Serif Display', serif;
+        }
+
+        /* STICKY NAVIGATION */
+        nav.sticky {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(26, 35, 50, 0.1);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        nav.sticky ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav.sticky a {
+            text-decoration: none;
+            color: var(--viko-navy);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            scroll-behavior: smooth;
+        }
+
+        nav.sticky a:hover {
+            color: var(--fisify-green);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--viko-navy) 0%, #0f1620 50%, #2a3a50 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(58, 125, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(42, 181, 160, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(90deg, var(--fisify-green), var(--viko-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo-viko {
+            color: white;
+        }
+
+        .logo-fisify {
+            color: var(--fisify-green);
+        }
+
+        .logo-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* COLOR BAR */
+        .color-bar {
+            height: 4px;
+            display: flex;
+            background: linear-gradient(90deg,
+                var(--viko-red) 0%,
+                var(--viko-red) 25%,
+                var(--viko-blue) 25%,
+                var(--viko-blue) 50%,
+                var(--viko-teal) 50%,
+                var(--viko-teal) 75%,
+                var(--viko-orange) 75%,
+                var(--viko-orange) 100%);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.light-bg {
+            background: var(--warm-white);
+        }
+
+        section.sand-bg {
+            background: var(--sand);
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--viko-navy);
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* SECTION 01: DIAGNÓSTICO */
+        .section-num {
+            font-size: 6rem;
+            font-weight: 700;
+            color: rgba(26, 35, 50, 0.08);
+            margin-bottom: 1rem;
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(26, 35, 50, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 35, 50, 0.15);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--fisify-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(26, 35, 50, 0.7);
+            font-size: 1rem;
+        }
+
+        .diagnosis-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .diagnosis-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 201, 167, 0.05), rgba(58, 125, 216, 0.05));
+            border-left: 4px solid var(--fisify-green);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .diagnosis-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.6s ease;
+        }
+
+        .diagnosis-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--viko-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .diagnosis-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--viko-navy);
+        }
+
+        .diagnosis-item p {
+            font-size: 0.95rem;
+            color: rgba(26, 35, 50, 0.75);
+            line-height: 1.5;
+        }
+
+        /* SOLUTION BANNER & CARDS */
+        .solution-banner {
+            background: var(--viko-navy);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .solution-banner h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(26, 35, 50, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--fisify-green);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .solution-card:nth-child(1) {
+            border-top-color: var(--viko-red);
+        }
+
+        .solution-card:nth-child(2) {
+            border-top-color: var(--viko-blue);
+        }
+
+        .solution-card:nth-child(3) {
+            border-top-color: var(--viko-teal);
+        }
+
+        .solution-card:nth-child(4) {
+            border-top-color: var(--viko-orange);
+        }
+
+        .solution-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(26, 35, 50, 0.15);
+        }
+
+        .solution-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--viko-navy);
+        }
+
+        .solution-card p {
+            font-size: 0.95rem;
+            color: rgba(26, 35, 50, 0.75);
+            line-height: 1.6;
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* SECTION 03: PROGRAMA BASE */
+        .programa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .programa-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(26, 35, 50, 0.08);
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .programa-item.visible {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.5s ease;
+        }
+
+        .programa-item h4 {
+            font-size: 1.1rem;
+            color: var(--viko-navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .programa-item p {
+            font-size: 0.9rem;
+            color: rgba(26, 35, 50, 0.7);
+        }
+
+        /* SECTION 04: IMPLANTACIÓN */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(26, 35, 50, 0.08);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-phase {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--fisify-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-label {
+            font-size: 1rem;
+            color: var(--viko-navy);
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: rgba(26, 35, 50, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--viko-navy);
+            color: white;
+            text-align: center;
+            padding: 80px 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--viko-navy);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav.sticky ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 50px 1.5rem;
+            }
+
+            .solution-banner, .cta-section {
+                padding: 50px 1.5rem;
+            }
+
+            .hero-logos {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat-cards, .diagnosis-points, .solution-cards, .programa-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Propuesta personalizada · Marzo 2026</div>
+            <h1>Bienestar físico como <span class="gradient">ventaja competitiva</span></h1>
+            <p>Transformamos el ecosistema VIKO 360 con soluciones integrales de salud y bienestar</p>
+            <div class="hero-logos">
+                <span class="logo-viko">VIKO</span>
+                <span class="logo-separator">×</span>
+                <span class="logo-fisify">fisify</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLOR BAR -->
+    <div class="color-bar"></div>
+
+    <!-- STICKY NAVIGATION -->
+    <nav class="sticky">
+        <ul>
+            <li><a href="#diagnostico">Diagnóstico</a></li>
+            <li><a href="#soluciones">Soluciones</a></li>
+            <li><a href="#programa">Programa base</a></li>
+            <li><a href="#implantacion">Implantación</a></li>
+            <li><a href="#siguiente">Siguiente paso</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION 01: DIAGNÓSTICO -->
+    <section id="diagnostico" class="light-bg">
+        <div class="section-num">01</div>
+        <h2>Diagnóstico</h2>
+
+        <div class="stat-cards">
+            <div class="stat-card">
+                <div class="stat-number">~300</div>
+                <div class="stat-label">Empleados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Marcas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Oficinas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">Híbrido</div>
+                <div class="stat-label">Modelo de trabajo</div>
+            </div>
+        </div>
+
+        <div class="diagnosis-points">
+            <div class="diagnosis-item">
+                <div class="diagnosis-num">1</div>
+                <h4>Demanda de bienestar en alza</h4>
+                <p>Los empleados de VIKO valoran cada vez más el cuidado de su salud física y mental como parte integral de su experiencia laboral.</p>
+            </div>
+            <div class="diagnosis-item">
+                <div class="diagnosis-num">2</div>
+                <h4>EVP competitivo</h4>
+                <p>Necesidad de diferenciar la propuesta de valor para atraer y retener talento en un mercado laboral cada vez más exigente.</p>
+            </div>
+            <div class="diagnosis-item">
+                <div class="diagnosis-num">3</div>
+                <h4>Cobertura incompleta</h4>
+                <p>Los beneficios actuales no cubren de forma integral las necesidades de salud física, especialmente prevención y tratamiento de lesiones musculoesqueléticas.</p>
+            </div>
+            <div class="diagnosis-item">
+                <div class="diagnosis-num">4</div>
+                <h4>Complejidad multi-sede</h4>
+                <p>La dispersión geográfica requiere soluciones escalables que funcionen tanto de forma digital como presencial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: SOLUCIONES -->
+    <section id="soluciones" class="light-bg">
+        <div class="section-num">02</div>
+        <h2>Soluciones</h2>
+
+        <div class="solution-banner">
+            <h3>Pilares de nuestra propuesta</h3>
+            <p>Cuatro ejes que transforman el bienestar en tu organización</p>
+        </div>
+
+        <div class="solution-cards">
+            <div class="solution-card">
+                <div class="solution-icon">📱</div>
+                <h4>Fisioterapia digital 24/7 con IA AURYA</h4>
+                <p>Acceso ilimitado a sesiones de fisioterapia personalizadas, planes de ejercicio adaptados y seguimiento de recuperación a través de nuestra plataforma inteligente.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">👥</div>
+                <h4>Talleres y seminarios</h4>
+                <p>Formación continua sobre prevención de lesiones, ergonomía, gestión del dolor y hábitos saludables con expertos en salud laboral.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🏥</div>
+                <h4>Fisioterapia presencial add-on</h4>
+                <p><strong>A Coruña:</strong> Posibilidad de búsqueda de convenio con clínica local para sesiones presenciales complementarias.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon">🎮</div>
+                <h4>Gamificación y engagement</h4>
+                <p>Sistema de incentivos, retos y logros que motiva a los empleados a mantener hábitos saludables y participar activamente en el programa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: PROGRAMA BASE -->
+    <section id="programa" class="sand-bg">
+        <div class="section-num">03</div>
+        <h2>Programa base</h2>
+
+        <div class="programa-grid">
+            <div class="programa-item">
+                <h4>📲 App personalizada</h4>
+                <p>Plataforma intuitiva con acceso a todos los servicios, seguimiento de progreso y comunicación con tu fisioterapeuta asignado.</p>
+            </div>
+            <div class="programa-item">
+                <h4>👨‍⚕️ Fisioterapeuta asignado</h4>
+                <p>Profesional dedicado que diseña tu plan personalizado y realiza el seguimiento de tu evolución.</p>
+            </div>
+            <div class="programa-item">
+                <h4>🏃 Planes de ejercicio</h4>
+                <p>Protocolos basados en evidencia científica, adaptados a tu condición física y objetivos de bienestar.</p>
+            </div>
+            <div class="programa-item">
+                <h4>🏆 Gamificación</h4>
+                <p>Desafíos, badges y reconocimientos que hacen el bienestar divertido y motivador.</p>
+            </div>
+            <div class="programa-item">
+                <h4>💊 Píldoras de salud</h4>
+                <p>Contenido educativo semanal sobre prevención, ergonomía, nutrición y recuperación muscular.</p>
+            </div>
+            <div class="programa-item">
+                <h4>📊 Reportes PRL mensual</h4>
+                <p>Análisis agregado y anónimo de métricas de bienestar para optimizar estrategias de salud laboral.</p>
+            </div>
+            <div class="programa-item">
+                <h4>📢 Marketing y comunicación</h4>
+                <p>Campañas de engagement, contenido en redes y materiales promocionales para maximizar adopción.</p>
+            </div>
+            <div class="programa-item">
+                <h4>🎤 Sesión bienvenida</h4>
+                <p>Presentación inicial del programa para asegurar adopción exitosa desde el primer día.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: IMPLANTACIÓN -->
+    <section id="implantacion" class="light-bg">
+        <div class="section-num">04</div>
+        <h2>Implantación</h2>
+        <p style="margin-bottom: 3rem; font-size: 1.1rem; color: rgba(26, 35, 50, 0.8);">Nuestro enfoque por fases garantiza una adopción exitosa y resultados medibles</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-phase">1</div>
+                <div class="timeline-label">Escuchar</div>
+                <div class="timeline-desc">Diagnóstico profundo de necesidades y contexto de VIKO</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">2</div>
+                <div class="timeline-label">Personalizar</div>
+                <div class="timeline-desc">Diseño de propuesta adaptada a vuestros procesos</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">3</div>
+                <div class="timeline-label">Lanzar</div>
+                <div class="timeline-desc">Rollout del programa con formación y comunicación</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">4</div>
+                <div class="timeline-label">Optimizar</div>
+                <div class="timeline-desc">Ajustes basados en feedback y métricas iniciales</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">5</div>
+                <div class="timeline-label">Escalar</div>
+                <div class="timeline-desc">Expansión a nuevas áreas y profundización de impacto</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="siguiente" class="cta-section">
+        <h2>Queremos construir esto con vosotros</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Estamos convencidos de que el bienestar de vuestros empleados es la clave para potenciar VIKO 360</p>
+    </section>
+
+    <!-- COLOR BAR -->
+    <div class="color-bar"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 fisify · Transformando el bienestar empresarial</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.stat-card, .diagnosis-item, .solution-card, .programa-item, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll navigation
+        document.querySelectorAll('nav.sticky a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Stagger animations on page load
+        window.addEventListener('load', () => {
+            const animatedElements = document.querySelectorAll('.stat-card, .diagnosis-item, .solution-card, .programa-item, .timeline-item');
+            animatedElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
